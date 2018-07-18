@@ -1,38 +1,30 @@
 package com.mishra.Sample;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
+public class AppTest
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
+    @Test
+    public void do_RD()
     {
-        super( testName );
-    }
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\baradam\\BaradaPrasadMishra\\chromedriver.exe");
+        WebDriver driver=new ChromeDriver();
+        driver.get("https://google.com");
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+        System.out.println("The Title of the page is : "+driver.getTitle());
+        driver.navigate().to("https://www.gmail.com");
+        System.out.println("The Title of the page is : "+driver.getTitle());
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+        JavascriptExecutor js=(JavascriptExecutor)driver;
+        js.executeScript("alert('The Test case run sucessfully')");
+
+        driver.switchTo().alert().accept();
+        System.out.println("Now i close the browser");
+
+        driver.close();
+
     }
 }
