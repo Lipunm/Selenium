@@ -25,6 +25,6 @@ public class AppTest
         System.out.println("Now i close the browser");
 
         driver.close();
-
+   System.out.println("now i finish my test");
     }
 }
